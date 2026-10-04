@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="
+      width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no
+    "
+    />
+
+    <meta name="theme-color" content="#020006" />
+
+    <title>6 meses, um universo inteiro</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- =================================
+       TELA DE ENTRADA
+  ================================== -->
+
+    <section id="entrada">
+
+      <div class="entradaConteudo">
+        <p class="pequeno">&#10022; SEIS MESES DE N&Oacute;S &#10022;</p>
+
+        <h1>6 meses,<span>um universo inteiro</span></h1>
+        <p class="descricao">Tenho uma coisa para te mostrar...</p>
+        <button id="btnEntrar">
+          COME&#199;AR NOSSA VIAGEM <span>&#10022;</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =================================
+       UNIVERSO
+  ================================== -->
+
+    <main id="universo">
+      <!-- THREE.JS -->
+
+      <div id="canvasContainer"></div>
+
+      <!-- =================================
+         HUD
+    ================================== -->
+
+      <div id="hud">
+        <div class="hudTopo">
+          <span>✦</span>
+
+          NOSSA GALÁXIA
+
+          <span>✦</span>
+        </div>
+
+        <!-- PROGRESSO -->
+
+        <div id="progresso">
+          <div id="barraProgresso"></div>
+        </div>
+
+        <!-- INSTRUÇÃO -->
+
+        <div id="instrucao">
+          <span> deslize para viajar &middot; arraste para olhar </span>
+
+          <div class="seta">↓</div>
+        </div>
+      </div>
+
+      <!-- =================================
+         MENSAGEM INICIAL
+    ================================== -->
+
+      <div id="legendasMemorias"></div>
+      <div id="mensagemInicio">
+        <span aria-hidden="true">&#10022;</span>
+        <h2>6 MESES<br /><em>COM MEU AMOR</em></h2>
+        <p>
+          6 meses de momentos, risadas, carinho e mem&oacute;rias que eu quero
+          guardar para sempre.
+        </p>
+      </div>
+      <section id="preludioFinal" class="textoEncerramento" aria-hidden="true">
+        <h2>E depois de todas essas memórias…</h2>
+        <p>ainda tem uma coisa que eu preciso te dizer.</p>
+      </section>
+      <section id="mensagemFinal" class="textoEncerramento" aria-hidden="true">
+        <h2>Obrigado por esses 6 meses, meu amor. ❤️</h2>
+        <p>Por cada sorriso, cada momento, cada abraço e até pelas nossas pequenas loucuras.</p>
+        <p>Se em apenas 6 meses já construímos tantas memórias, eu mal posso esperar para descobrir tudo o que ainda vamos viver juntos.</p>
+        <p>Eu escolheria você de novo, em qualquer universo.</p>
+        <p>E espero que essa seja apenas uma pequena parte de uma história muito, muito maior.</p>
+        <p class="amorFinal">Eu te amo. ✦</p>
+        <span class="dataFinal">04.04.2026 — ∞</span>
+      </section>
+    </main>
+
+    <!-- =================================
+       THREE.JS
+  ================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- =================================
+       NOSSO JAVASCRIPT
+  ================================== -->
+
+    <script src="script.js"></script>
+  </body>
+</html>

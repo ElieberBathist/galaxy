@@ -1,0 +1,71 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { width:100%; height:100%; background:#020006; color:white; font-family:Arial,Helvetica,sans-serif; overscroll-behavior:none; touch-action:none; }
+body { overflow:hidden; }
+[hidden] { display:none !important; }
+#entrada { position:fixed; inset:0; height:100dvh; z-index:1000; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background:radial-gradient(ellipse at 50% 45%,rgba(110,28,130,.25),transparent 55%),radial-gradient(circle,#0b0110,#020004 75%); transition:opacity 1.7s ease,transform 1.7s ease; }
+#entrada::before { content:""; position:absolute; width:min(450px,95vw); height:450px; border-radius:50%; background:radial-gradient(circle,rgba(225,70,255,.1),transparent 65%); animation:respirar 6s ease-in-out infinite; }
+@keyframes respirar { 50% { transform:scale(1.1); opacity:.6; } }
+.entradaConteudo { position:relative; width:min(88%,620px); z-index:2; }
+.pequeno { font-size:10px; letter-spacing:3px; line-height:1.8; color:#d1a7d6; margin-bottom:25px; }
+.entradaConteudo h1 { font:normal clamp(48px,10vw,76px)/1.08 Georgia,serif; }
+.entradaConteudo h1 span { display:block; font-style:italic; font-size:.7em; margin-top:12px; color:#eab7db; text-shadow:0 0 35px rgba(210,100,230,.22); }
+.descricao { margin:35px auto 30px; color:#c9b8cd; font:italic 16px/1.7 Georgia,serif; }
+#btnEntrar { width:min(330px,100%); padding:18px 16px; border:1px solid rgba(235,160,255,.5); border-radius:100px; color:white; background:rgba(255,255,255,.04); font-size:10px; letter-spacing:2px; box-shadow:0 0 30px rgba(210,80,255,.1); cursor:pointer; transition:transform .2s ease,background .3s ease; }
+#btnEntrar span { margin-left:8px; color:#eab7db; }
+#btnEntrar:active { transform:scale(.97); }
+#btnEntrar:focus-visible { outline:2px solid #f4c4e5; outline-offset:6px; }
+#entrada.saindo { opacity:0; transform:scale(1.08); pointer-events:none; }
+#universo { position:fixed; inset:0; height:100dvh; background:#000; overflow:hidden; }
+#canvasContainer { position:absolute; inset:0; }
+canvas { display:block; width:100%; height:100%; }
+#hud { position:fixed; inset:0; z-index:20; pointer-events:none; }
+.hudTopo { position:absolute; top:max(20px,env(safe-area-inset-top)); width:100%; text-align:center; font-size:8px; letter-spacing:4px; color:rgba(255,255,255,.55); }
+.hudTopo span { color:#d6a3e1; }
+#progresso { position:absolute; right:15px; top:30%; height:40%; width:1px; background:rgba(255,255,255,.15); }
+#barraProgresso { position:absolute; top:0; width:100%; height:0%; background:#edb0ee; box-shadow:0 0 8px #d99ae0; }
+#instrucao { position:absolute; bottom:max(25px,env(safe-area-inset-bottom)); width:100%; text-align:center; color:rgba(255,255,255,.5); font-size:9px; letter-spacing:2px; transition:opacity .7s; }
+.seta { margin-top:7px; font-size:17px; animation:seta 2s infinite; }
+@keyframes seta { 50% { transform:translateY(6px); } }
+#mensagemInicio { position:fixed; top:50%; left:50%; width:min(86%,650px); transform:translate(-50%,-50%); text-align:center; z-index:15; opacity:0; pointer-events:none; transition:opacity .65s ease; }
+#mensagemInicio span { color:#e3abda; }
+#mensagemInicio h2 { margin-top:20px; font:normal clamp(40px,9vw,76px)/1.15 Georgia,serif; letter-spacing:.06em; text-shadow:0 2px 30px #08000e; }
+#mensagemInicio h2 em { font-style:normal; font-size:.65em; color:#ebbbdf; letter-spacing:.08em; }
+#mensagemInicio p { max-width:440px; margin:24px auto 0; font:italic clamp(14px,3.7vw,18px)/1.6 Georgia,serif; color:#d7c6dc; text-shadow:0 2px 15px #000; }
+#legendasMemorias { position:absolute; inset:0; z-index:10; pointer-events:none; overflow:hidden; }
+.legendaMemoria { position:absolute; top:0; left:0; width:min(76vw,310px); text-align:center; opacity:0; transition:opacity .25s ease; text-shadow:0 2px 7px #020006,0 0 16px #020006; }
+.legendaMemoria span { font-size:10px; letter-spacing:2.5px; color:#e5b1d9; }
+.legendaMemoria h2 { margin:9px 0; font:normal 25px/1.2 Georgia,serif; color:#fff1fa; }
+.legendaMemoria p { font:14px/1.6 Georgia,serif; color:#dbcbdc; }
+@media(max-width:500px) { .legendaMemoria h2 { font-size:22px; } .legendaMemoria p { font-size:13px; } #instrucao { font-size:8px; letter-spacing:1px; } }
+@media(max-height:500px) { .entradaConteudo h1 { font-size:42px; } .pequeno { margin-bottom:12px; } .descricao { margin:18px auto; } #mensagemInicio h2 { font-size:36px; } #mensagemInicio p { margin-top:12px; } }
+@media(prefers-reduced-motion:reduce) { *,*::before { animation:none !important; } #entrada { transition-duration:.4s; } }
+
+/* Encerramento sem bloquear os gestos da viagem. */
+.legendaMemoria.especial h2 { color:#ffd2e8; }
+.textoEncerramento { position:absolute; z-index:16; opacity:0; pointer-events:none; text-align:center; color:#e9d9e7; text-shadow:0 2px 12px #020006,0 0 28px #020006; transition:opacity .35s ease; }
+#preludioFinal { top:50%; left:50%; width:min(86%,620px); transform:translate(-50%,-50%); }
+#preludioFinal h2 { font:normal clamp(27px,6vw,43px)/1.3 Georgia,serif; color:#f6e5ef; }
+#preludioFinal p { margin-top:22px; font:italic clamp(15px,3.8vw,20px)/1.6 Georgia,serif; }
+#mensagemFinal { top:40%; bottom:max(18px,env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%); width:min(86%,520px); display:flex; flex-direction:column; justify-content:center; gap:clamp(8px,1.6dvh,16px); }
+#mensagemFinal h2 { font:normal clamp(19px,4.6vw,27px)/1.25 Georgia,serif; color:#f6d7e8; }
+#mensagemFinal p { font:normal clamp(12px,3.3vw,16px)/1.45 Georgia,serif; }
+#mensagemFinal .amorFinal { font-style:italic; font-size:clamp(22px,5vw,30px); color:#f0b6d7; }
+.dataFinal { font-size:10px; letter-spacing:3px; color:#c6a4c9; padding-top:3px; }
+@media(max-height:650px) and (max-aspect-ratio:6/5) {
+  #mensagemFinal { top:37%; gap:7px; }
+  #mensagemFinal h2 { font-size:18px; }
+  #mensagemFinal p { font-size:12px; line-height:1.35; }
+  #mensagemFinal .amorFinal { font-size:22px; }
+}
+@media(min-aspect-ratio:6/5) {
+  #mensagemFinal { top:max(50px,env(safe-area-inset-top)); bottom:max(16px,env(safe-area-inset-bottom)); left:53%; transform:none; width:42%; gap:clamp(6px,1.6dvh,16px); }
+  #mensagemFinal h2 { font-size:clamp(17px,2.5vw,27px); }
+  #mensagemFinal p { font-size:clamp(11px,1.7vw,16px); line-height:1.4; }
+}
+@media(max-height:400px) and (min-aspect-ratio:6/5) {
+  #mensagemFinal { top:38px; bottom:8px; gap:4px; width:44%; }
+  #mensagemFinal h2 { font-size:15px; }
+  #mensagemFinal p { font-size:10px; line-height:1.25; }
+  #mensagemFinal .amorFinal { font-size:18px; }
+  .dataFinal { font-size:9px; }
+}
